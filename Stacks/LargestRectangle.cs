@@ -20,7 +20,8 @@ public class LargestRectangle
             {
                 leftmostBuilding = smallerBuildings.Pop();
 
-                // width is 1 if only 1 building was in stack
+                // width is index if only 1 building in stack
+                // each building has height > 0
                 // else width = the index of the next building - observed building index - 1
                 // - 
                 int width = smallerBuildings.Count() == 0
