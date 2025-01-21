@@ -7,8 +7,8 @@ public class MinimumBribes
     {
         var originalQueue = currentQ.Select((o, index) => index + 1).ToList();
         var totalBribes = 0;
-        var chatoic = false;
-        for(var index = 0; index < size && !chatoic; index++) {
+        var chaotic = false;
+        for(var index = 0; index < size && !chaotic; index++) {
             var currentPerson = currentQ[index];
             var originalPerson = originalQueue[index];
             
@@ -32,10 +32,10 @@ public class MinimumBribes
                 continue;
             }
             
-            chatoic = true;
+            chaotic = true;
         }
         
-        if (chatoic) Console.WriteLine("Too chaotic");
+        if (chaotic) Console.WriteLine("Too chaotic");
         else Console.WriteLine(totalBribes);
     }
 

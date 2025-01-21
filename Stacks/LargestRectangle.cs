@@ -5,40 +5,40 @@ public class LargestRectangle
 
     public static int Solve(List<int> buildings)
     {
-        var smallerBuildings = new Stack<int>();
+        var observedBuildings = new Stack<int>();
         var totalWidth = buildings.Count();
         var maxArea = int.MinValue;
         var area = 0;
-        var leftmostBuilding = 0;
+        var rightmostBuilding = 0;
 
         for (var index = 0; index < totalWidth; index++)
         {
             // check if we have previous buildings and that the next building is smaller
             // if smaller calculate previous buildings area
             // else add building to previous and move to next building
-            while (smallerBuildings.Count > 0 && buildings[smallerBuildings.Peek()] >= buildings[index])
+            while (observedBuildings.Count > 0 && buildings[observedBuildings.Peek()] >= buildings[index])
             {
-                leftmostBuilding = smallerBuildings.Pop();
+                rightmostBuilding = observedBuildings.Pop();
 
                 // width is index if only 1 building in stack
                 // each building has height > 0
                 // else width = the index of the next building - observed building index - 1
                 // - 
-                int width = smallerBuildings.Count() == 0
+                int width = observedBuildings.Count() == 0
                     ? index
-                    : index - smallerBuildings.Peek() - 1;
+                    : index - observedBuildings.Peek() - 1;
                     // : index - buildingIndex;
-                area = width * buildings[leftmostBuilding];
+                area = width * buildings[rightmostBuilding];
                 maxArea = Math.Max(maxArea, area);
             }
-            smallerBuildings.Push(index);
+            observedBuildings.Push(index);
         }
 
-        while (smallerBuildings.Count > 0)
+        while (observedBuildings.Count > 0)
         {
-            leftmostBuilding = smallerBuildings.Pop();
-            var width = smallerBuildings.Count() == 0 ? totalWidth : totalWidth - smallerBuildings.Peek() - 1;
-            area = buildings[leftmostBuilding] * width;
+            rightmostBuilding = observedBuildings.Pop();
+            var width = observedBuildings.Count() == 0 ? totalWidth : totalWidth - observedBuildings.Peek() - 1;
+            area = buildings[rightmostBuilding] * width;
             maxArea = Math.Max(maxArea, area);
         }
         return maxArea;

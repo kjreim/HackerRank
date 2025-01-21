@@ -3,6 +3,9 @@ namespace HackerRank.BitManipulation;
 public class LonelyInteger
 {
 
+    // assumes that there for (n - 1)/2 there is a matching pair
+    // the last element is a single
+    // the xor element will eventually give the result as adding 2 of the same resets
     public static int Solve(List<int> a)
     {
         int res = a[0];

@@ -1,15 +1,12 @@
-using System.Runtime.Loader;
-
 namespace HackerRank.Stacks;
 
 public class TwoStacks
 {
     public static int Solve(int maxSum, List<int> towerA, List<int> towerB)
     {
-        var result = new Stack<int>();
         long total = 0;
-        int indexA, indexB;
-        indexA = indexB = 0;
+        int indexB;
+        var indexA = indexB = 0;
         while (indexA < towerA.Count && total + towerA[indexA] <= maxSum)
         {
             total += towerA[indexA];

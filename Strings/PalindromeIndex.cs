@@ -18,12 +18,12 @@ public class PalindromeIndex
         }
         return -1;
 
-        bool IsPalindrome(int start, int end) {
+        bool IsPalindrome(int left, int right) {
 
-            while (start < end) {
-                if (s[start] != s[end]) return false;
-                start += 1;
-                end -= 1;
+            while (left < right) {
+                if (s[left] != s[right]) return false;
+                left += 1;
+                right -= 1;
             }
 
             return true;
